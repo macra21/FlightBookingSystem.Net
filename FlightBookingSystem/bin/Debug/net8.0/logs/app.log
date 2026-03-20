@@ -1,0 +1,110 @@
+2026-03-20 10:04:55,706 [1] INFO  FlightBookingSystem.Program - Starting application...
+2026-03-20 10:04:55,716 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-03-20 10:04:55,719 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter Save: Saving employee: FlightBookingSystem.Domain.Employee
+2026-03-20 10:04:55,959 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Caught Exception: Failed to save employee
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'email' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 35
+2026-03-20 10:04:55,983 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'email' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 35
+   --- End of inner exception stack trace ---
+2026-03-20 10:04:55,986 [1] FATAL FlightBookingSystem.Program - Aplicația s-a oprit din cauza unei erori critice.
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'email' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 35
+   --- End of inner exception stack trace ---
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 44
+   at FlightBookingSystem.Program.Main(String[] args) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 25
+2026-03-20 10:07:21,712 [1] INFO  FlightBookingSystem.Program - Starting application...
+2026-03-20 10:07:21,722 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-03-20 10:07:21,724 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter Save: Saving employee: FlightBookingSystem.Domain.Employee
+2026-03-20 10:07:21,970 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Caught Exception: Failed to save employee
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Giani' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 34
+2026-03-20 10:07:21,987 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Giani' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 34
+   --- End of inner exception stack trace ---
+2026-03-20 10:07:21,989 [1] FATAL FlightBookingSystem.Program - Aplicația s-a oprit din cauza unei erori critice.
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Giani' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 34
+   --- End of inner exception stack trace ---
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 43
+   at FlightBookingSystem.Program.Main(String[] args) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 25
+2026-03-20 10:07:42,845 [1] INFO  FlightBookingSystem.Program - Starting application...
+2026-03-20 10:07:42,854 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-03-20 10:07:42,855 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter Save: Saving employee: FlightBookingSystem.Domain.Employee
+2026-03-20 10:07:43,081 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit Save: Saved employee successfully: FlightBookingSystem.Domain.Employee
+2026-03-20 10:07:43,082 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindOne: Finding employee with id=6
+2026-03-20 10:07:43,085 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindOne: Employee with id=6 found.
+2026-03-20 10:07:43,086 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindAll: Finding all employees
+2026-03-20 10:07:43,087 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindAll: Returned found employees

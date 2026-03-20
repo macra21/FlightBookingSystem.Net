@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "s3PKZJVnW3k=",
+  "success": true,
+  "projectFilePath": "D:\\Facultate\\C#\\FlightBookingSystem\\FlightBookingSystem\\FlightBookingSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alxma\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\google.protobuf\\3.32.0\\google.protobuf.3.32.0.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.8\\k4os.compression.lz4.streams.1.3.8.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\log4net\\3.3.0\\log4net.3.3.0.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\mysql.data\\9.6.0\\mysql.data.9.6.0.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.configuration.configurationmanager\\11.0.0-preview.2.26159.112\\system.configuration.configurationmanager.11.0.0-preview.2.26159.112.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.memory\\4.6.3\\system.memory.4.6.3.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.security.cryptography.protecteddata\\11.0.0-preview.2.26159.112\\system.security.cryptography.protecteddata.11.0.0-preview.2.26159.112.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.security.permissions\\8.0.0\\system.security.permissions.8.0.0.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
+    "C:\\Users\\alxma\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512"
+  ],
+  "logs": []
+}
