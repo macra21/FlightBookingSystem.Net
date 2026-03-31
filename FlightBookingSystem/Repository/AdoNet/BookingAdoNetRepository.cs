@@ -3,19 +3,34 @@ using FlightBookingSystem.Domain;
 using log4net;
 using FlightBookingSystem.Utils;
 using FlightBookingSystem.Exceptions;
+
 namespace FlightBookingSystem.Repository.AdoNet;
 
-public class BookingAdoNetRepository: IBookingRepository
+/// <summary>
+/// ADO.NET implementation of <see cref="IBookingRepository"/>.
+/// This class handles all database related operations from CRUD to custom queries
+/// for the <see cref="Booking"/> entity using MySql.
+/// </summary>
+public class BookingAdoNetRepository : IBookingRepository
 {
     private static readonly ILog logger = LogManager.GetLogger(typeof(BookingAdoNetRepository));
     private readonly DbUtils dbUtils;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BookingAdoNetRepository"/> class.
+    /// Sets up the database utility for connection management.
+    /// </summary>
     public BookingAdoNetRepository()
     {
         logger.Info("Initializing BookingAdoNetRepository");
         this.dbUtils = new DbUtils();
     }
 
+    /// <summary>
+    /// Saves a new <see cref="Booking"/> to the database and assigns it an auto-generated ID.
+    /// </summary>
+    /// <param name="entity">The booking entity to persist.</param>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during the save operation.</exception>
     public void Save(Booking entity)
     {
         logger.Debug($"Enter Save: Saving booking for flight ID: {entity.Flight.Id} with {entity.NumberOfSeats} seats");
@@ -46,10 +61,16 @@ public class BookingAdoNetRepository: IBookingRepository
         }
     }
 
+    /// <summary>
+    /// Finds a <see cref="Booking"/> based on its ID, including related Flight information.
+    /// </summary>
+    /// <param name="id">The ID of the booking to find.</param>
+    /// <returns>The <see cref="Booking"/> if found, or null otherwise.</returns>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during the search.</exception>
     public Booking FindOne(int id)
     {
         logger.Debug($"Enter FindOne: Finding booking with id={id}");
-        Booking booking = null;
+        Booking? booking = null;
         var connection = dbUtils.GetConnection();
         using (var command = connection.CreateCommand())
         {
@@ -85,6 +106,12 @@ public class BookingAdoNetRepository: IBookingRepository
         return booking;
     }
 
+    /// <summary>
+    /// Retrieves all bookings from the database, including their associated Flight details.
+    /// <para><strong>WARNING:</strong> Use this function carefully, as it can return a large number of entities.</para>
+    /// </summary>
+    /// <returns>An <see cref="IEnumerable{Booking}"/> containing all bookings.</returns>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during retrieval.</exception>
     public IEnumerable<Booking> FindAll()
     {
         logger.Debug("Enter FindAll: Finding all bookings");
@@ -119,6 +146,11 @@ public class BookingAdoNetRepository: IBookingRepository
         return bookings;
     }
 
+    /// <summary>
+    /// Updates an existing <see cref="Booking"/> based on its ID.
+    /// </summary>
+    /// <param name="entity">The booking entity with updated information.</param>
+    /// <exception cref="RepositoryException">Thrown if no booking with the given ID is found or if a database error occurs.</exception>
     public void Update(Booking entity)
     {
         logger.Debug($"Enter Update: Updating booking with id={entity.Id}");
@@ -153,6 +185,11 @@ public class BookingAdoNetRepository: IBookingRepository
         }
     }
 
+    /// <summary>
+    /// Deletes a <see cref="Booking"/> based on its ID.
+    /// </summary>
+    /// <param name="id">The ID of the booking to remove.</param>
+    /// <exception cref="RepositoryException">Thrown if no booking with the given ID is found or if a database error occurs.</exception>
     public void Delete(int id)
     {
         logger.Debug($"Enter Delete: Deleting booking with id={id}");
@@ -183,6 +220,9 @@ public class BookingAdoNetRepository: IBookingRepository
         }
     }
 
+    /// <summary>
+    /// Helper method to add a parameter to a database command.
+    /// </summary>
     private void AddParameter(IDbCommand command, string name, object value)
     {
         var parameter = command.CreateParameter();
@@ -191,6 +231,11 @@ public class BookingAdoNetRepository: IBookingRepository
         command.Parameters.Add(parameter);
     }
 
+    /// <summary>
+    /// Helper method that maps a single row from the <see cref="IDataReader"/> into a <see cref="Booking"/> entity.
+    /// </summary>
+    /// <param name="reader">The IDataReader pointing to the current row.</param>
+    /// <returns>A new <see cref="Booking"/> object.</returns>
     private Booking ExtractBookingFromReader(IDataReader reader)
     {
         int flightId = reader.GetInt32(reader.GetOrdinal("flight_id"));

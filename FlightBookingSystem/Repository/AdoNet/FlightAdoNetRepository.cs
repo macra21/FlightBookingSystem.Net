@@ -6,17 +6,31 @@ using log4net;
 
 namespace FlightBookingSystem.Repository.AdoNet;
 
+/// <summary>
+/// ADO.NET implementation of <see cref="IFlightRepository"/>.
+/// This class handles all database related operations from CRUD to custom queries
+/// for the <see cref="Flight"/> entity.
+/// </summary>
 public class FlightAdoNetRepository : IFlightRepository
 {
     private static readonly ILog logger = LogManager.GetLogger(typeof(FlightAdoNetRepository));
     private readonly DbUtils dbUtils;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FlightAdoNetRepository"/> class.
+    /// Sets up the database utility for connection management.
+    /// </summary>
     public FlightAdoNetRepository()
     {
         logger.Info("Initializing FlightAdoNetRepository");
         this.dbUtils = new DbUtils();
     }
     
+    /// <summary>
+    /// Saves a new <see cref="Flight"/> to the database and assigns it an auto generated id.
+    /// </summary>
+    /// <param name="entity">the entity to persist</param>
+    /// <exception cref="RepositoryException">if a database error occurs.</exception>
     public void Save(Flight entity)
     {
         logger.Debug($"Enter Save: Saving flight from {entity.DepartureAirport} to {entity.ArrivalAirport}");
@@ -48,6 +62,12 @@ public class FlightAdoNetRepository : IFlightRepository
         }
     }
     
+    /// <summary>
+    /// Finds an <see cref="Flight"/> based on its id.
+    /// </summary>
+    /// <param name="id">the ID of the entity</param>
+    /// <returns>the <see cref="Flight"/> if found, or null otherwise</returns>
+    /// <exception cref="RepositoryException">if a database error occurs.</exception>
     public Flight FindOne(int id)
     {
         logger.Debug($"Enter FindOne: Finding flight with id={id}");
@@ -87,6 +107,12 @@ public class FlightAdoNetRepository : IFlightRepository
         return flight;
     }
     
+    /// <summary>
+    /// Retrieves all the flights from the database.
+    /// <para><strong>WARNING:</strong> Use this function carefully, because there can be lots of entities in the database.</para>
+    /// </summary>
+    /// <returns>an <see cref="IEnumerable{Flight}"/> collection of all flights</returns>
+    /// <exception cref="RepositoryException">if a database error occurs</exception>
     public IEnumerable<Flight> FindAll()
     {
         logger.Debug("Enter FindAll: Finding all flights");
@@ -117,6 +143,11 @@ public class FlightAdoNetRepository : IFlightRepository
         return flights;
     }
     
+    /// <summary>
+    /// Updates an existing <see cref="Flight"/> based on its id.
+    /// </summary>
+    /// <param name="entity">the entity with updated information</param>
+    /// <exception cref="RepositoryException">if a database error occurs.</exception>
     public void Update(Flight entity)
     {
         logger.Debug($"Enter Update: Updating flight: {entity}");
@@ -152,6 +183,11 @@ public class FlightAdoNetRepository : IFlightRepository
         }
     }
     
+    /// <summary>
+    /// Deletes an <see cref="Flight"/> based on its id.
+    /// </summary>
+    /// <param name="id">the ID of the entity to remove</param>
+    /// <exception cref="RepositoryException">if a database error occurs.</exception>
     public void Delete(int id)
     {
         logger.Debug($"Enter Delete: Deleting flight with id={id}");
@@ -182,6 +218,13 @@ public class FlightAdoNetRepository : IFlightRepository
         }
     }
     
+    /// <summary>
+    /// Finds all flights based on their destination and departure date
+    /// </summary>
+    /// <param name="destination">the arrival airport name</param>
+    /// <param name="date">the scheduled departure date</param>
+    /// <returns>an <see cref="IEnumerable{Flight}"/> collection of the respective flights</returns>
+    /// <exception cref="RepositoryException">if a database error occurs</exception>
     public IEnumerable<Flight> FindByDestinationAndDate(string destination, DateTime date)
     {
         logger.Debug($"Enter FindByDestinationAndDate: Finding flights to {destination} on {date.ToString("yyyy-MM-dd")}");
@@ -214,6 +257,9 @@ public class FlightAdoNetRepository : IFlightRepository
         return flights;
     }
     
+    /// <summary>
+    /// Helper method to add a parameter to a database command.
+    /// </summary>
     private void AddParameter(IDbCommand command, string name, object value)
     {
         var parameter = command.CreateParameter();
@@ -222,6 +268,9 @@ public class FlightAdoNetRepository : IFlightRepository
         command.Parameters.Add(parameter);
     }
 
+    /// <summary>
+    /// Helper method that maps a single row from the <see cref="IDataReader"/> into a <see cref="Flight"/> object.
+    /// </summary>
     private Flight ExtractFlightFromReader(IDataReader reader)
     {
         int id = reader.GetInt32(reader.GetOrdinal("id"));

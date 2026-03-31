@@ -3,20 +3,35 @@ using FlightBookingSystem.Domain;
 using log4net;
 using FlightBookingSystem.Utils;
 using FlightBookingSystem.Exceptions;
+
 namespace FlightBookingSystem.Repository.AdoNet;
 
+/// <summary>
+/// ADO.NET implementation of <see cref="IEmployeeRepository"/>.
+/// This class handles all database related operations from CRUD to custom queries
+/// for the <see cref="Employee"/> entity.
+/// </summary>
 public class EmployeeAdoNetRepository : IEmployeeRepository
 {
     private static readonly ILog logger = LogManager.GetLogger(typeof(EmployeeAdoNetRepository));
     
     private readonly DbUtils dbUtils;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EmployeeAdoNetRepository"/> class.
+    /// Sets up the database utility for connection management.
+    /// </summary>
     public EmployeeAdoNetRepository()
     {
         logger.Info("Initializing EmployeeAdoNetRepository");
         this.dbUtils = new DbUtils();
     }
 
+    /// <summary>
+    /// Saves a new <see cref="Employee"/> to the database and assigns it an auto-generated ID.
+    /// </summary>
+    /// <param name="entity">The employee entity to persist.</param>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during the save operation.</exception>
     public void Save(Employee entity)
     {
         logger.Debug($"Enter Save: Saving employee: {entity}");
@@ -45,10 +60,16 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         }
     }
 
+    /// <summary>
+    /// Finds an <see cref="Employee"/> based on their ID.
+    /// </summary>
+    /// <param name="id">The ID of the employee to find.</param>
+    /// <returns>The <see cref="Employee"/> if found, or null otherwise.</returns>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during the search.</exception>
     public Employee FindOne(int id)
     {
         logger.Debug($"Enter FindOne: Finding employee with id={id}");
-        Employee employee = null;
+        Employee? employee = null;
         var connection = dbUtils.GetConnection();
         using (var command = connection.CreateCommand())
         {
@@ -84,6 +105,12 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         return employee;
     }
 
+    /// <summary>
+    /// Retrieves all the employees from the database.
+    /// <para><strong>WARNING:</strong> Use this function carefully, because there can be lots of entities in the database.</para>
+    /// </summary>
+    /// <returns>An <see cref="IEnumerable{Employee}"/> collection of all employees.</returns>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during retrieval.</exception>
     public IEnumerable<Employee> FindAll()
     {
         logger.Debug($"Enter FindAll: Finding all employees");
@@ -114,6 +141,11 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         return employees;
     }
 
+    /// <summary>
+    /// Updates an existing <see cref="Employee"/> based on its ID.
+    /// </summary>
+    /// <param name="entity">The employee entity with updated information.</param>
+    /// <exception cref="RepositoryException">Thrown if no employee with the given ID is found or if a database error occurs.</exception>
     public void Update(Employee entity)
     {
         logger.Debug($"Enter Update: Updating employee: {entity}");
@@ -130,7 +162,7 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
                 if (affectedRows == 0)
                 {
                     logger.Error($"Failed to update employee with id={entity.Id}");
-                    var repoEx = new RepositoryException("DB error while updating employee");
+                    var repoEx = new RepositoryException("DB error while updating employee, no rows affected.");
                     logger.Error("Throwing RepositoryException", repoEx);
                     throw repoEx;
                 }
@@ -147,6 +179,11 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         }
     }
 
+    /// <summary>
+    /// Deletes an <see cref="Employee"/> based on its ID.
+    /// </summary>
+    /// <param name="id">The ID of the employee to remove.</param>
+    /// <exception cref="RepositoryException">Thrown if no employee with the given ID is found or if a database error occurs.</exception>
     public void Delete(int id)
     {
         logger.Debug($"Enter Delete: Deleting employee with id={id}");
@@ -161,7 +198,7 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
                 if (affectedRows == 0)
                 {
                     logger.Error($"Failed to delete employee with id={id}");
-                    var repoEx = new RepositoryException("DB error while deleting employee");
+                    var repoEx = new RepositoryException("DB error while deleting employee, no rows affected.");
                     logger.Error("Throwing RepositoryException", repoEx);
                     throw repoEx;
                 }
@@ -178,10 +215,18 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         }
     }
 
+    /// <summary>
+    /// Finds an <see cref="Employee"/> based on their username and password.
+    /// <para>This is used in the Authentication service for login.</para>
+    /// </summary>
+    /// <param name="username">The account username.</param>
+    /// <param name="password">The account password.</param>
+    /// <returns>The <see cref="Employee"/> if credentials match, or null otherwise.</returns>
+    /// <exception cref="RepositoryException">Thrown if a database error occurs during the search.</exception>
     public Employee FindByUsernameAndPassword(string username, string password)
     {
         logger.Debug($"Enter FindByUsernameAndPassword: Finding employee with username={username}");
-        Employee employee = null;
+        Employee? employee = null;
         var connection = dbUtils.GetConnection();
         using (var command = connection.CreateCommand())
         {
@@ -218,6 +263,9 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         return employee;
     }
 
+    /// <summary>
+    /// Helper method to add a parameter to a database command.
+    /// </summary>
     private void AddParameter(IDbCommand command, string name, object value)
     {
         var parameter = command.CreateParameter();
@@ -226,6 +274,11 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
         command.Parameters.Add(parameter);
     }
     
+    /// <summary>
+    /// Helper method that maps a single row from the <see cref="IDataReader"/> into an <see cref="Employee"/> entity.
+    /// </summary>
+    /// <param name="reader">The IDataReader pointing to the current row.</param>
+    /// <returns>A new <see cref="Employee"/> object.</returns>
     private Employee ExtractEmployeeFromReader(IDataReader reader)
     {
         int id = reader.GetInt32(reader.GetOrdinal("id"));
