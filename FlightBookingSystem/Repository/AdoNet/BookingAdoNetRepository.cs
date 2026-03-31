@@ -243,8 +243,9 @@ public class BookingAdoNetRepository : IBookingRepository
         string arrAirport = reader.GetString(reader.GetOrdinal("arrival_airport"));
         DateTime depTime = reader.GetDateTime(reader.GetOrdinal("departure_time"));
         DateTime arrTime = reader.GetDateTime(reader.GetOrdinal("arrival_time"));
+        int availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
 
-        Flight flight = new Flight(flightId, depAirport, arrAirport, depTime, arrTime);
+        Flight flight = new Flight(flightId, depAirport, arrAirport, depTime, arrTime, availableSeats);
         
         int bookingId = reader.GetInt32(reader.GetOrdinal("booking_id"));
         int seats = reader.GetInt32(reader.GetOrdinal("number_of_seats"));

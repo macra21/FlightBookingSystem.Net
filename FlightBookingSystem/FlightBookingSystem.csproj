@@ -14,8 +14,4 @@
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="11.0.0-preview.2.26159.112" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Resources\" />
-    </ItemGroup>
-
 </Project>
