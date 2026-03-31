@@ -1,0 +1,19 @@
+﻿## Arhive de build (compilare)
+[Bb]in/
+[Oo]bj/
+
+## JetBrains Rider
+.idea/
+.vs/
+*.user
+*.userosscache
+*.sln.DotSettings.user
+
+## NuGet
+packages/
+*.nuget.props
+*.nuget.targets
+
+## OS specific
+.DS_Store
+Thumbs.db
