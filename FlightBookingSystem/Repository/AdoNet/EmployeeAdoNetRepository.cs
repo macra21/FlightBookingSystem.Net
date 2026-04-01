@@ -216,23 +216,21 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
     }
 
     /// <summary>
-    /// Finds an <see cref="Employee"/> based on their username and password.
+    /// Finds an <see cref="Employee"/> based on their username.
     /// <para>This is used in the Authentication service for login.</para>
     /// </summary>
     /// <param name="username">The account username.</param>
-    /// <param name="password">The account password.</param>
     /// <returns>The <see cref="Employee"/> if credentials match, or null otherwise.</returns>
     /// <exception cref="RepositoryException">Thrown if a database error occurs during the search.</exception>
-    public Employee FindByUsernameAndPassword(string username, string password)
+    public Employee FindByUsername(string username)
     {
-        logger.Debug($"Enter FindByUsernameAndPassword: Finding employee with username={username}");
+        logger.Debug($"Enter FindByUsername: Finding employee with username={username}");
         Employee? employee = null;
         var connection = dbUtils.GetConnection();
         using (var command = connection.CreateCommand())
         {
-            command.CommandText = "SELECT * FROM employees WHERE username = @username and password = @password";
+            command.CommandText = "SELECT * FROM employees WHERE username = @username";
             AddParameter(command, "@username", username);
-            AddParameter(command, "@password", password);
             try
             {
                 using (var reader = command.ExecuteReader())
@@ -254,11 +252,11 @@ public class EmployeeAdoNetRepository : IEmployeeRepository
 
         if (employee == null)
         {
-            logger.Debug($"Exit FindByUsernameAndPassword: Employee with username={username} NOT found");
+            logger.Debug($"Exit FindByUsername: Employee with username={username} NOT found");
         }
         else
         {
-            logger.Debug($"Exit FindByUsernameAndPassword: Employee with username={username} found");
+            logger.Debug($"Exit FindByUsername: Employee with username={username} found");
         }
         return employee;
     }
