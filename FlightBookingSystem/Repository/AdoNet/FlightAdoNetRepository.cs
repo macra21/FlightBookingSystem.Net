@@ -38,13 +38,14 @@ public class FlightAdoNetRepository : IFlightRepository
 
         using (var command = connection.CreateCommand())
         {
-            command.CommandText = "INSERT INTO flights (departure_airport, arrival_airport, departure_time, arrival_time) " +
-                                  "VALUES (@depAirport, @arrAirport, @depTime, @arrTime); " +
+            command.CommandText = "INSERT INTO flights (departure_airport, arrival_airport, departure_time, arrival_time, available_seats) " +
+                                  "VALUES (@depAirport, @arrAirport, @depTime, @arrTime, @seats); " +
                                   "SELECT LAST_INSERT_ID();";
             AddParameter(command, "@depAirport", entity.DepartureAirport);
             AddParameter(command, "@arrAirport", entity.ArrivalAirport);
-            AddParameter(command, "@depTime", entity.DepartureTime); // ADO.NET mapeaza DateTime automat!
+            AddParameter(command, "@depTime", entity.DepartureTime);
             AddParameter(command, "@arrTime", entity.ArrivalTime);
+            AddParameter(command, "@seats", entity.AvailableSeats);
 
             try
             {
@@ -97,13 +98,10 @@ public class FlightAdoNetRepository : IFlightRepository
         }
 
         if (flight == null)
-        {
             logger.Debug($"Exit FindOne: Flight with id={id} NOT found.");
-        }
         else
-        {
             logger.Debug($"Exit FindOne: Flight with id={id} found.");
-        }
+        
         return flight;
     }
     
@@ -155,11 +153,12 @@ public class FlightAdoNetRepository : IFlightRepository
         using (var command = connection.CreateCommand())
         {
             command.CommandText = "UPDATE flights SET departure_airport = @depAirport, arrival_airport = @arrAirport, " +
-                                  "departure_time = @depTime, arrival_time = @arrTime WHERE id = @id";
+                                  "departure_time = @depTime, arrival_time = @arrTime, available_seats = @seats WHERE id = @id";
             AddParameter(command, "@depAirport", entity.DepartureAirport);
             AddParameter(command, "@arrAirport", entity.ArrivalAirport);
             AddParameter(command, "@depTime", entity.DepartureTime);
             AddParameter(command, "@arrTime", entity.ArrivalTime);
+            AddParameter(command, "@seats", entity.AvailableSeats);
             AddParameter(command, "@id", entity.Id);
             try
             {
@@ -225,9 +224,9 @@ public class FlightAdoNetRepository : IFlightRepository
     /// <param name="date">the scheduled departure date</param>
     /// <returns>an <see cref="IEnumerable{Flight}"/> collection of the respective flights</returns>
     /// <exception cref="RepositoryException">if a database error occurs</exception>
-    public IEnumerable<Flight> FindByDestinationAndDate(string destination, DateTime date)
+    public IEnumerable<Flight> FindByDestinationAndDepartureDate(string destination, DateTime date)
     {
-        logger.Debug($"Enter FindByDestinationAndDate: Finding flights to {destination} on {date.ToString("yyyy-MM-dd")}");
+        logger.Debug($"Enter FindByDestinationAndDepartureDate: Finding flights to {destination} on {date.ToString("yyyy-MM-dd")}");
         var flights = new List<Flight>();
         var connection = dbUtils.GetConnection();
         using (var command = connection.CreateCommand())
@@ -253,7 +252,7 @@ public class FlightAdoNetRepository : IFlightRepository
                 throw repoEx;
             }
         }
-        logger.Debug($"Exit FindByDestinationAndDate: Found {flights.Count} matching flights");
+        logger.Debug($"Exit FindByDestinationAndDepartureDate: Found {flights.Count} matching flights");
         return flights;
     }
     
@@ -278,7 +277,8 @@ public class FlightAdoNetRepository : IFlightRepository
         string arrAirport = reader.GetString(reader.GetOrdinal("arrival_airport"));
         DateTime depTime = reader.GetDateTime(reader.GetOrdinal("departure_time"));
         DateTime arrTime = reader.GetDateTime(reader.GetOrdinal("arrival_time"));
+        int seats = reader.GetInt32(reader.GetOrdinal("available_seats"));
 
-        return new Flight(id, depAirport, arrAirport, depTime, arrTime);
+        return new Flight(id, depAirport, arrAirport, depTime, arrTime, seats);
     }
 }

@@ -1,8 +1,27 @@
 ﻿namespace FlightBookingSystem.Exceptions;
 
+/// <summary>
+/// Custom exception class used to semantically signal errors that occur 
+/// within the repository layer.
+/// </summary>
 public class RepositoryException : Exception
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RepositoryException"/> class.
+    /// </summary>
     public RepositoryException() : base() {}
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RepositoryException"/> class with a specified error message.
+    /// </summary>
+    /// <param name="message">The message that describes the error.</param>
     public RepositoryException(string message) : base(message) {}
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RepositoryException"/> class with a specified error message 
+    /// and a reference to the inner exception that is the cause of this exception.
+    /// </summary>
+    /// <param name="message">The error message that explains the reason for the exception.</param>
+    /// <param name="innerException">The exception that is the cause of the current exception (e.g., a MySqlException).</param>
     public RepositoryException(string message, Exception innerException) : base(message, innerException) {}
 }
