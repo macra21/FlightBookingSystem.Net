@@ -24,4 +24,11 @@ public class Booking:IEntity<int>
         this.NumberOfSeats = numberOfSeats;
         this.TouristNames = touristNames;
     }
+    
+    public Booking(Flight flight, int numberOfSeats, List<string> touristNames)
+    {
+        this.Flight = flight;
+        this.NumberOfSeats = numberOfSeats;
+        this.TouristNames = touristNames;
+    }
 }

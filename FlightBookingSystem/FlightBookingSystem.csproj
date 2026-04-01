@@ -14,4 +14,13 @@
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="11.0.0-preview.2.26159.112" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Resources\Views\LoginView.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Resources\Views\MainView.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>

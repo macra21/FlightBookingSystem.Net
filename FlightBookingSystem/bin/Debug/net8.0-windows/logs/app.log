@@ -1,0 +1,238 @@
+2026-04-01 01:26:57,180 [1] INFO  FlightBookingSystem.Program - Starting application...
+2026-04-01 01:26:57,190 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 01:26:57,192 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter Save: Saving employee: FlightBookingSystem.Domain.Employee
+2026-04-01 01:26:58,127 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Caught Exception: Failed to save employee
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Rata' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 49
+2026-04-01 01:26:58,141 [1] ERROR FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Rata' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 49
+   --- End of inner exception stack trace ---
+2026-04-01 01:26:58,144 [1] FATAL FlightBookingSystem.Program - Aplicația s-a oprit din cauza unei erori critice.
+FlightBookingSystem.Exceptions.RepositoryException: DB error while saving employee
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry 'Rata' for key 'employees.username'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalarAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 49
+   --- End of inner exception stack trace ---
+   at FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository.Save(Employee entity) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\EmployeeAdoNetRepository.cs:line 58
+   at FlightBookingSystem.Program.Main(String[] args) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 25
+2026-04-01 23:43:59,555 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:43:59,569 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:43:59,570 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:43:59,570 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:43:59,589 [1] FATAL FlightBookingSystem.Program - A critical error occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at FlightBookingSystem.Resources.Views.LoginView.Setup(EmployeeService es, FlightService fs, BookingService bs) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Resources\Views\LoginView.cs:line 17
+   at FlightBookingSystem.Program.Main() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 31
+2026-04-01 23:44:48,994 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:44:49,006 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:44:49,008 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:44:49,009 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:44:49,022 [1] FATAL FlightBookingSystem.Program - A critical error occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at FlightBookingSystem.Resources.Views.LoginView.Setup(EmployeeService es, FlightService fs, BookingService bs) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Resources\Views\LoginView.cs:line 17
+   at FlightBookingSystem.Program.Main() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 31
+2026-04-01 23:46:08,285 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:46:08,298 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:46:08,299 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:46:08,300 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:46:08,312 [1] FATAL FlightBookingSystem.Program - A critical error occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at FlightBookingSystem.Resources.Views.LoginView.Setup(EmployeeService es, FlightService fs, BookingService bs) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Resources\Views\LoginView.cs:line 18
+   at FlightBookingSystem.Program.Main() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Program.cs:line 31
+2026-04-01 23:46:43,879 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:46:43,892 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:46:43,893 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:46:43,893 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:47:27,943 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:47:27,955 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:47:27,956 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:47:27,956 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:47:54,104 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:47:54,116 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:47:54,117 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:47:54,118 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:48:01,942 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-01 23:48:02,623 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-01 23:48:02,636 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-01 23:48:02,657 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-01 23:48:02,671 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-01 23:48:02,689 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Caught Exception: Failed to find all bookings
+System.IndexOutOfRangeException: Could not find specified column in results: available_seats
+   at MySql.Data.MySqlClient.ResultSet.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetOrdinal(String name)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.ExtractBookingFromReader(IDataReader reader) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 246
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 133
+2026-04-01 23:48:02,699 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while finding all bookings
+ ---> System.IndexOutOfRangeException: Could not find specified column in results: available_seats
+   at MySql.Data.MySqlClient.ResultSet.GetOrdinal(String name)
+   at MySql.Data.MySqlClient.MySqlDataReader.GetOrdinal(String name)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.ExtractBookingFromReader(IDataReader reader) in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 246
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 133
+   --- End of inner exception stack trace ---
+2026-04-01 23:48:31,897 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindByDestinationAndDepartureDate: Finding flights to LEMD on 2026-03-28
+2026-04-01 23:48:31,906 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindByDestinationAndDepartureDate: Found 0 matching flights
+2026-04-01 23:55:10,547 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:55:10,561 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:55:10,562 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:55:10,562 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:55:18,519 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-01 23:55:18,742 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-01 23:55:18,749 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-01 23:55:18,767 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-01 23:55:18,773 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-01 23:55:18,798 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Caught Exception: Failed to find all bookings
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'f.destination' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 129
+2026-04-01 23:55:18,802 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while finding all bookings
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'f.destination' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 129
+   --- End of inner exception stack trace ---
+2026-04-01 23:56:51,545 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-01 23:56:51,559 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-01 23:56:51,559 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-01 23:56:51,560 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-01 23:56:58,367 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-01 23:56:58,615 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-01 23:56:58,622 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-01 23:56:58,647 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-01 23:56:58,654 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-01 23:56:58,677 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Caught Exception: Failed to find all bookings
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'f.destination' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 129
+2026-04-01 23:56:58,684 [1] ERROR FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Throwing RepositoryException
+FlightBookingSystem.Exceptions.RepositoryException: DB error while finding all bookings
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'f.destination' in 'field list'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository.FindAll() in D:\Facultate\C#\FlightBookingSystem\FlightBookingSystem\Repository\AdoNet\BookingAdoNetRepository.cs:line 129
+   --- End of inner exception stack trace ---
+2026-04-01 23:57:22,459 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindByDestinationAndDepartureDate: Finding flights to EDDF on 2026-04-28
+2026-04-01 23:57:22,463 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindByDestinationAndDepartureDate: Found 0 matching flights
+2026-04-01 23:57:45,173 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindByDestinationAndDepartureDate: Finding flights to EDDF on 2026-03-28
+2026-04-01 23:57:45,174 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindByDestinationAndDepartureDate: Found 1 matching flights
+2026-04-02 00:00:37,199 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-02 00:00:37,212 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-02 00:00:37,213 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-02 00:00:37,213 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-02 00:00:43,622 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-02 00:00:43,858 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-02 00:00:43,865 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-02 00:00:43,884 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-02 00:00:43,890 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-02 00:00:43,908 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit FindAll: Returned 2 bookings
+2026-04-02 00:04:35,435 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-02 00:04:35,448 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-02 00:04:35,449 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-02 00:04:35,449 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-02 00:04:41,786 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-02 00:04:42,010 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-02 00:04:42,018 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-02 00:04:42,036 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-02 00:04:42,042 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-02 00:04:42,060 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit FindAll: Returned 2 bookings
+2026-04-02 00:04:59,686 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter Save: Saving booking for flight ID: 2 with 3 seats
+2026-04-02 00:04:59,717 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit Save: Saved booking successfully with ID: 3
+2026-04-02 00:04:59,720 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter Update: Updating flight: Flight{id=2, departureAirport='EHAM', arrivalAirport='LFPG', departureTime=31-Mar-26 1:45:36 PM, arrivalTime=31-Mar-26 3:50:41 PM, availableSeats=47}
+2026-04-02 00:04:59,732 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit Update: Updated flight: Flight{id=2, departureAirport='EHAM', arrivalAirport='LFPG', departureTime=31-Mar-26 1:45:36 PM, arrivalTime=31-Mar-26 3:50:41 PM, availableSeats=47}
+2026-04-02 00:04:59,732 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-02 00:04:59,733 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-02 00:04:59,735 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-02 00:04:59,736 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit FindAll: Returned 3 bookings
+2026-04-02 00:06:22,211 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-02 00:06:22,224 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-02 00:06:22,225 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-02 00:06:22,225 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-02 00:06:29,597 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-02 00:06:29,837 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-02 00:06:29,845 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-02 00:06:29,863 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-02 00:06:29,870 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-02 00:06:29,886 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit FindAll: Returned 3 bookings
+2026-04-02 00:08:22,789 [1] INFO  FlightBookingSystem.Program - Starting WinForms application...
+2026-04-02 00:08:22,801 [1] INFO  FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Initializing EmployeeAdoNetRepository
+2026-04-02 00:08:22,802 [1] INFO  FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Initializing FlightAdoNetRepository
+2026-04-02 00:08:22,803 [1] INFO  FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Initializing BookingAdoNetRepository
+2026-04-02 00:08:27,416 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Enter FindByUsername: Finding employee with username=Gigel
+2026-04-02 00:08:27,657 [1] DEBUG FlightBookingSystem.Repository.AdoNet.EmployeeAdoNetRepository - Exit FindByUsername: Employee with username=Gigel found
+2026-04-02 00:08:27,665 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Enter FindAll: Finding all flights
+2026-04-02 00:08:27,683 [1] DEBUG FlightBookingSystem.Repository.AdoNet.FlightAdoNetRepository - Exit FindAll: Returned found flights
+2026-04-02 00:08:27,690 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Enter FindAll: Finding all bookings
+2026-04-02 00:08:27,709 [1] DEBUG FlightBookingSystem.Repository.AdoNet.BookingAdoNetRepository - Exit FindAll: Returned 3 bookings

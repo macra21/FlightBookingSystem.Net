@@ -1,38 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using FlightBookingSystem.Domain;
-using FlightBookingSystem.Repository;
-using FlightBookingSystem.Repository.AdoNet;
+﻿using FlightBookingSystem.Repository.AdoNet;
+using FlightBookingSystem.Service;
+using FlightBookingSystem.Resources.Views;
 using log4net;
 
 namespace FlightBookingSystem;
 
-class Program
+static class Program
 {
     private static readonly ILog logger = LogManager.GetLogger(typeof(Program));
 
-    static void Main(string[] args)
+    [STAThread]
+    static void Main()
     {
         log4net.Config.XmlConfigurator.Configure();
+        logger.Info("Starting WinForms application...");
 
-        logger.Info("Starting application...");
+        ApplicationConfiguration.Initialize();
 
         try
         {
-            IEmployeeRepository employeeRepository = new EmployeeAdoNetRepository();
-
-            Employee employee = new Employee(0, "Rata", "ParolaSecreta");
-            employeeRepository.Save(employee);
-
-            Employee foundEmployee = employeeRepository.FindOne(employee.Id);
-
-            IEnumerable<Employee> allEmployees = employeeRepository.FindAll();
+            var employeeRepo = new EmployeeAdoNetRepository();
+            var flightRepo = new FlightAdoNetRepository();
+            var bookingRepo = new BookingAdoNetRepository();
+            
+            var employeeService = new EmployeeService(employeeRepo);
+            var flightService = new FlightService(flightRepo);
+            var bookingService = new BookingService(bookingRepo);
+            
+            var loginView = new LoginView();
+            loginView.Setup(employeeService, flightService, bookingService);
+            
+            Application.Run(loginView);
         }
         catch (Exception ex)
         {
-            logger.Fatal("Aplicația s-a oprit din cauza unei erori critice.", ex);
+            logger.Fatal("A critical error occurred.", ex);
+            MessageBox.Show("A critical error occurred. Check logs for details.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        Console.ReadKey();
     }
 }

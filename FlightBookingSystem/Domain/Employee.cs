@@ -13,5 +13,9 @@ public class Employee: IEntity<int>
         Password = password;
     }
     
-    
+    public Employee(string username, string password)
+    {
+        Username = username;
+        Password = password;
+    }
 }

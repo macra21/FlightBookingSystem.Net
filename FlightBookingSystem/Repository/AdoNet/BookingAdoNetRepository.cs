@@ -120,10 +120,10 @@ public class BookingAdoNetRepository : IBookingRepository
         using (var command = connection.CreateCommand())
         {
             command.CommandText = @"
-                SELECT b.id AS booking_id, b.flight_id, b.number_of_seats, b.tourist_names,
-                       f.departure_airport, f.arrival_airport, f.departure_time, f.arrival_time
-                FROM bookings b
-                INNER JOIN flights f ON b.flight_id = f.id";
+                            SELECT b.id, b.number_of_seats, b.tourist_names, 
+                                   f.id as flight_id, f.departure_airport, f.arrival_airport, f.departure_time, f.arrival_time, f.available_seats 
+                            FROM bookings b 
+                            INNER JOIN flights f ON b.flight_id = f.id";
             try
             {
                 using (var reader = command.ExecuteReader())
@@ -247,7 +247,7 @@ public class BookingAdoNetRepository : IBookingRepository
 
         Flight flight = new Flight(flightId, depAirport, arrAirport, depTime, arrTime, availableSeats);
         
-        int bookingId = reader.GetInt32(reader.GetOrdinal("booking_id"));
+        int bookingId = reader.GetInt32(reader.GetOrdinal("id"));
         int seats = reader.GetInt32(reader.GetOrdinal("number_of_seats"));
         string touristsString = reader.GetString(reader.GetOrdinal("tourist_names"));
         List<string> touristNames = new List<string>();

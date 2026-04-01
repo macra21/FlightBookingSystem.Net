@@ -78,6 +78,8 @@ public class Flight : IEntity<int>
         ArrivalTime = arrivalTime;
         AvailableSeats = availableSeats;
     }
+    
+    
 
     /// <summary>
     /// Returns a string representation of the Flight object.
